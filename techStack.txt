@@ -1,0 +1,14 @@
+required:
+  sbt 0.12 (need 0.11.3-2 or better)
+  git
+
+optional:
+  eclipse (using indigo with Eclipse Scala plug-in)
+  sbteclipse-plugin (via plugins.sbt)
+
+dependencies managed via sbt:
+ 
+ Scala 2.9.2 (not 2.10.0)
+ scalatest
+ mockito
+ 

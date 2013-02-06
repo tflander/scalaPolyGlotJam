@@ -1,0 +1,10 @@
+[0m[[0mdebug[0m] [0mRunning Test services.FunctionalTest : subclass(false, org.scalatest.Suite) with arguments [0m
+[0m[[0mdebug[0m] [0mRunning Test services.MutableTest : subclass(false, org.scalatest.Suite) with arguments [0m
+[0m[[0mdebug[0m] [0mRunning Test services.UnearnedBadgesTest : subclass(false, org.scalatest.Suite) with arguments [0m
+[0m[[0mdebug[0m] [0mRunning Test services.ImperativeTest : subclass(false, org.scalatest.Suite) with arguments [0m
+[0m[[0minfo[0m] [0mPassed: : Total 8, Failed 0, Errors 0, Passed 8, Skipped 0[0m
+[0m[[0mdebug[0m] [0mPassed tests:[0m
+[0m[[0mdebug[0m] [0m	services.MutableTest[0m
+[0m[[0mdebug[0m] [0m	services.ImperativeTest[0m
+[0m[[0mdebug[0m] [0m	services.UnearnedBadgesTest[0m
+[0m[[0mdebug[0m] [0m	services.FunctionalTest[0m

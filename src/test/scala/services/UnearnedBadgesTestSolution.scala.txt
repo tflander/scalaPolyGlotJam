@@ -1,0 +1,91 @@
+package services
+
+import org.scalatest._
+import org.scalatest.mock.MockitoSugar
+import org.mockito.Mockito._
+import models._
+
+class UnearnedBadgesTest extends FunSpec with ShouldMatchers with BeforeAndAfter with MockitoSugar {
+
+  describe("when finding unearned badges unlocked for a badge earner") {
+
+    var badgeDao: BadgeDao = null
+    var myBadgesService: MyBadgesService = null
+    
+    val me = "me"
+    val standardBadgeOne = Badge("One", Standard())
+    val standardBadgeTwo = Badge("Two", Standard())
+    val surpriseBadge = Badge("Surprise", Surprise())
+    val revealedMysteryBadge = Badge("Mystery", Mystery())
+    val obscurededMysteryBadge = Badge("?", Mystery())
+    
+    before {
+      badgeDao = mock[BadgeDao]
+      myBadgesService = new MyBadgesService(badgeDao)
+    }
+
+    it("Should return an empty list when there are no badges to earn") {
+      when(badgeDao getAllBadges).thenReturn(Nil)
+      when(badgeDao getBadgesForEarner me).thenReturn(Nil)
+      
+      myBadgesService.unearnedBadgesUnlockedFor(me) should be(Nil)
+    }
+
+    it("should filter out an earned badge") {
+      // look at FunctionalTest to learn how to solve this problem in a functional (non-imperative manner)
+      when(badgeDao getAllBadges).thenReturn(List(standardBadgeOne, standardBadgeTwo))
+      when(badgeDao getBadgesForEarner me).thenReturn(List(EarnedBadge(me, "One")))
+
+      myBadgesService.unearnedBadgesUnlockedFor(me) should be(List(standardBadgeTwo))
+    }
+
+    it("should return an empty list when the earner has earned all badges") {
+      // A free green, so the pair should implement this test from scratch
+      when(badgeDao getAllBadges).thenReturn(List(standardBadgeOne, standardBadgeTwo))
+      when(badgeDao getBadgesForEarner me).thenReturn(List(EarnedBadge(me, "One"), EarnedBadge(me, "Two")))
+
+      myBadgesService.unearnedBadgesUnlockedFor(me) should be(Nil)
+    }
+
+    it("should return all badges when the earner has no earned badges") {
+      // A free green, so the pair should implement this test from scratch
+      when(badgeDao getAllBadges).thenReturn(List(standardBadgeOne, standardBadgeTwo))
+      when(badgeDao getBadgesForEarner me).thenReturn(Nil)
+
+      myBadgesService.unearnedBadgesUnlockedFor(me) should be(List(standardBadgeOne, standardBadgeTwo))
+    }
+    
+    it("should remove suprise badges, so the earner doesn't know they exist") {
+      when(badgeDao getAllBadges).thenReturn(List(standardBadgeOne, standardBadgeTwo, surpriseBadge))
+      when(badgeDao getBadgesForEarner me).thenReturn(List(EarnedBadge(me, "One")))
+      
+      myBadgesService.unearnedBadgesUnlockedFor(me) should be(List(standardBadgeTwo))
+    }
+    
+    it("should obscure mystery badges, so the earner doesn't know what they are or how to earn them") {
+      when(badgeDao getAllBadges).thenReturn(List(standardBadgeOne, standardBadgeTwo, revealedMysteryBadge))
+      when(badgeDao getBadgesForEarner me).thenReturn(List(EarnedBadge(me, "One")))
+      
+      myBadgesService.unearnedBadgesUnlockedFor(me) should be(List(standardBadgeTwo, obscurededMysteryBadge))
+    }
+    
+    /* Extra Credit -- leveled badges.  Earning a level unlocks the next level.  For 
+     * example, earning the first level unlocks the second level.  You get to see the next
+     * unearned badge, but you don't get to see how many levels exist.  It is possible that
+     * earning a badge may unlock multiple higher-level badges.  For example, earning the "Flash Card User"
+     * badge may unlock both the "Repeat Flash Card" badge and the "Quick Flash Card badge".
+     * 
+     * When calling myBadgesService.unearnedBadgesUnlockedFor(earner), do not return any locked leveled badges. 
+     */
+    /*
+    it("should filter out leveled badges beyond the first unearned level") {
+    }
+
+    it("should return an empty list for leveled badges when all leveled badges are earned") {
+    }
+
+    it("should return one unearned badge, given two leveled badge groupss exist and all levels of the first badge are earned") {
+    }
+	 */
+  }
+}

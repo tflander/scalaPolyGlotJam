@@ -1,0 +1,4 @@
+[0m[[0minfo[0m] [0m[32mMutableTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mFunctions to solve 'should filter out an earned badge'[0m[0m
+[0m[[0minfo[0m] [0m[32m- is ok to build a mutable list in a loop, but using List.map might be better (see FunctionalTest)[0m[0m
+[0m[[0minfo[0m] [0m[32m- is ok to build a mutable set in a loop, but using List.toSet might be better (see FunctionalTest)[0m[0m

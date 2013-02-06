@@ -1,0 +1,5 @@
+[0m[[0minfo[0m] [0m[32mFunctionalTest:[0m[0m
+[0m[[0minfo[0m] [0m[32mFunctions to solve 'should filter out an earned badge'[0m[0m
+[0m[[0minfo[0m] [0m[32m- is good to know List.map()[0m[0m
+[0m[[0minfo[0m] [0m[32m- is good to know List.toSet[0m[0m
+[0m[[0minfo[0m] [0m[32m- is good to know List.filter / List.filterNot[0m[0m
