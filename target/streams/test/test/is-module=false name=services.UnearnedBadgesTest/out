@@ -1,3 +1,0 @@
-[0m[[0minfo[0m] [0m[32mUnearnedBadgesTest:[0m[0m
-[0m[[0minfo[0m] [0m[32mwhen finding unearned badges unlocked for a badge earner[0m[0m
-[0m[[0minfo[0m] [0m[32m- Should return an empty list when there are no badges to earn[0m[0m

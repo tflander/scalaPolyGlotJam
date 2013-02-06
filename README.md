@@ -15,7 +15,7 @@ imperative style that we have grown accustomed to using.  Why not try it both wa
 
 Getting Started
 ---------------
-- clone the project on GitHub (TODO:  publish GIT URI)
+- clone the project from GitHub (git://github.com/tflander/scalaPolyGlotJam.git)
 - Install sbt (http://www.scala-sbt.org/)
 - run sbt from the cloned project
 - type "test" from the sbt prompt
